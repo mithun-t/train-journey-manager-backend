@@ -15,3 +15,32 @@ class TrainJourney(models.Model):
     bill_date = models.DateField()
     payment_mode = models.CharField(max_length=50)
     journey_status = models.CharField(max_length=50)
+
+
+class Station(models.Model):
+    code = models.CharField(max_length=10, unique=True)
+    name = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.name
+
+class Status(models.Model):
+    code = models.CharField(max_length=10, unique=True)
+    status = models.CharField(max_length=20)
+
+    def __str__(self):
+        return self.status
+
+class Berth(models.Model):
+    code = models.CharField(max_length=10, unique=True)
+    berth_type = models.CharField(max_length=20)
+
+    def __str__(self):
+        return self.berth_type
+
+class PaymentMode(models.Model):
+    code = models.CharField(max_length=10, unique=True)
+    mode = models.CharField(max_length=20)
+
+    def __str__(self):
+        return self.mode
