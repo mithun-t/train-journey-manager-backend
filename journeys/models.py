@@ -26,21 +26,21 @@ class Station(models.Model):
 
 class Status(models.Model):
     code = models.CharField(max_length=10, unique=True)
-    status = models.CharField(max_length=20)
+    name = models.CharField(max_length=20)
 
     def __str__(self):
-        return self.status
+        return self.name
 
 class Berth(models.Model):
     code = models.CharField(max_length=10, unique=True)
-    berth_type = models.CharField(max_length=20)
+    name = models.CharField(max_length=20)
 
     def __str__(self):
-        return self.berth_type
+        return self.name
 
 class PaymentMode(models.Model):
     code = models.CharField(max_length=10, unique=True)
-    mode = models.CharField(max_length=20)
+    name = models.CharField(max_length=20)
 
     def __str__(self):
-        return self.mode
+        return self.nameex
