@@ -1,6 +1,8 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 class TrainJourney(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     journey_date = models.DateField()
     train_number = models.CharField(max_length=10)
     train_name = models.CharField(max_length=100)
