@@ -16,6 +16,46 @@ class TrainJourneyViewSet(viewsets.ModelViewSet):
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)
 
+class StationViewSet(viewsets.ModelViewSet):
+    serializer_class = StationSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+    def get_queryset(self):
+        return Station.objects.filter(user=self.request.user)
+
+    def perform_create(self, serializer):
+        serializer.save(user=self.request.user)
+
+class StatusViewSet(viewsets.ModelViewSet):
+    serializer_class = StatusSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+    def get_queryset(self):
+        return Status.objects.filter(user=self.request.user)
+
+    def perform_create(self, serializer):
+        serializer.save(user=self.request.user)
+
+class BerthViewSet(viewsets.ModelViewSet):
+    serializer_class = BerthSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+    def get_queryset(self):
+        return Berth.objects.filter(user=self.request.user)
+
+    def perform_create(self, serializer):
+        serializer.save(user=self.request.user)
+
+class PaymentModeViewSet(viewsets.ModelViewSet):
+    serializer_class = PaymentModeSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+    def get_queryset(self):
+        return PaymentMode.objects.filter(user=self.request.user)
+
+    def perform_create(self, serializer):
+        serializer.save(user=self.request.user)
+
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
@@ -25,19 +65,3 @@ class CustomObtainAuthToken(ObtainAuthToken):
         response = super(CustomObtainAuthToken, self).post(request, *args, **kwargs)
         token = Token.objects.get(key=response.data['token'])
         return Response({'token': token.key, 'id': token.user_id})
-
-class StationViewSet(viewsets.ModelViewSet):
-    queryset = Station.objects.all()
-    serializer_class = StationSerializer
-
-class StatusViewSet(viewsets.ModelViewSet):
-    queryset = Status.objects.all()
-    serializer_class = StatusSerializer
-
-class BerthViewSet(viewsets.ModelViewSet):
-    queryset = Berth.objects.all()
-    serializer_class = BerthSerializer
-
-class PaymentModeViewSet(viewsets.ModelViewSet):
-    queryset = PaymentMode.objects.all()
-    serializer_class = PaymentModeSerializer

@@ -4,11 +4,11 @@ from .views import TrainJourneyViewSet, StationViewSet, StatusViewSet, BerthView
 
 router = DefaultRouter()
 router.register(r'journeys', TrainJourneyViewSet, basename='journey')
-router.register(r'stations', StationViewSet)
-router.register(r'statuses', StatusViewSet)
-router.register(r'berths', BerthViewSet)
-router.register(r'payment_modes', PaymentModeViewSet)
-router.register(r'users', UserViewSet)
+router.register(r'stations', StationViewSet, basename='station')
+router.register(r'statuses', StatusViewSet, basename='status')
+router.register(r'berths', BerthViewSet, basename='berth')
+router.register(r'payment_modes', PaymentModeViewSet, basename='payment_mode')
+router.register(r'users', UserViewSet, basename='user')
 
 urlpatterns = [
     path('', include(router.urls)),

@@ -23,18 +23,22 @@ class StationSerializer(serializers.ModelSerializer):
     class Meta:
         model = Station
         fields = ['id', 'code', 'name']
+        read_only_fields = ('user',)
 
 class StatusSerializer(serializers.ModelSerializer):
     class Meta:
         model = Status
         fields = ['id', 'code', 'name']
+        read_only_fields = ('user',)
 
 class BerthSerializer(serializers.ModelSerializer):
     class Meta:
         model = Berth
         fields = ['id', 'code', 'name']
+        read_only_fields = ('user',)
 
 class PaymentModeSerializer(serializers.ModelSerializer):
     class Meta:
         model = PaymentMode
         fields = ['id', 'code', 'name']
+        read_only_fields = ('user',)
