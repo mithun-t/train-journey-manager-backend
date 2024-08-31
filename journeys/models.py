@@ -21,7 +21,7 @@ class TrainJourney(models.Model):
 
 class Station(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    code = models.CharField(max_length=10, unique=True)
+    code = models.CharField(max_length=10)
     name = models.CharField(max_length=100)
 
     def __str__(self):
@@ -29,7 +29,7 @@ class Station(models.Model):
 
 class Status(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    code = models.CharField(max_length=10, unique=True)
+    code = models.CharField(max_length=10)
     name = models.CharField(max_length=20)
 
     def __str__(self):
@@ -37,7 +37,7 @@ class Status(models.Model):
 
 class Berth(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    code = models.CharField(max_length=10, unique=True)
+    code = models.CharField(max_length=10)
     name = models.CharField(max_length=20)
 
     def __str__(self):
@@ -45,7 +45,7 @@ class Berth(models.Model):
 
 class PaymentMode(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    code = models.CharField(max_length=10, unique=True)
+    code = models.CharField(max_length=10)
     name = models.CharField(max_length=20)
 
     def __str__(self):
