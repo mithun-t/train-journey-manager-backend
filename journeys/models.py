@@ -1,6 +1,8 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 class TrainJourney(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     journey_date = models.DateField()
     train_number = models.CharField(max_length=10)
     train_name = models.CharField(max_length=100)
@@ -18,6 +20,7 @@ class TrainJourney(models.Model):
 
 
 class Station(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     code = models.CharField(max_length=10, unique=True)
     name = models.CharField(max_length=100)
 
@@ -25,6 +28,7 @@ class Station(models.Model):
         return self.name
 
 class Status(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     code = models.CharField(max_length=10, unique=True)
     name = models.CharField(max_length=20)
 
@@ -32,6 +36,7 @@ class Status(models.Model):
         return self.name
 
 class Berth(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     code = models.CharField(max_length=10, unique=True)
     name = models.CharField(max_length=20)
 
@@ -39,6 +44,7 @@ class Berth(models.Model):
         return self.name
 
 class PaymentMode(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     code = models.CharField(max_length=10, unique=True)
     name = models.CharField(max_length=20)
 
