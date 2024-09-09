@@ -5,7 +5,6 @@ class TrainJourney(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     journey_date = models.DateField()
     train_number = models.CharField(max_length=10)
-    train_name = models.CharField(max_length=100)
     departure_station = models.CharField(max_length=100)
     arrival_station = models.CharField(max_length=100)
     pnr_number = models.CharField(max_length=10)
