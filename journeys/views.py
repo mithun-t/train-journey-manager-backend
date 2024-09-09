@@ -3,8 +3,8 @@ from rest_framework.authtoken.views import ObtainAuthToken
 from rest_framework.authtoken.models import Token
 from rest_framework.response import Response
 from django.contrib.auth.models import User
-from .models import TrainJourney, Station, Status, Berth, PaymentMode
-from .serializers import TrainJourneySerializer, StationSerializer, StatusSerializer, BerthSerializer, PaymentModeSerializer, UserSerializer
+from .models import TrainJourney, Train, Station, Status, Berth, PaymentMode
+from .serializers import TrainJourneySerializer, TrainSerializer, StationSerializer, StatusSerializer, BerthSerializer, PaymentModeSerializer, UserSerializer
 
 class TrainJourneyViewSet(viewsets.ModelViewSet):
     serializer_class = TrainJourneySerializer
@@ -15,6 +15,17 @@ class TrainJourneyViewSet(viewsets.ModelViewSet):
 
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)
+        
+class TrainViewSet(viewsets.ModelViewSet):
+    serializer_class = TrainSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+    def get_queryset(self):
+        return Train.objects.filter(user=self.request.user)
+
+    def perform_create(self, serializer):
+        serializer.save(user=self.request.user)
+
 
 class StationViewSet(viewsets.ModelViewSet):
     serializer_class = StationSerializer
