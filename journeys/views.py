@@ -3,8 +3,8 @@ from rest_framework.authtoken.views import ObtainAuthToken
 from rest_framework.authtoken.models import Token
 from rest_framework.response import Response
 from django.contrib.auth.models import User
-from .models import TrainJourney, Train, Station, Status, Berth, PaymentMode
-from .serializers import TrainJourneySerializer, TrainSerializer, StationSerializer, StatusSerializer, BerthSerializer, PaymentModeSerializer, UserSerializer
+from .models import *
+from .serializers import *
 
 class TrainJourneyViewSet(viewsets.ModelViewSet):
     serializer_class = TrainJourneySerializer

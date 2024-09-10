@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from django.contrib.auth.models import User
-from .models import TrainJourney, Station, Train, Status, Berth, PaymentMode
+from .models import *
 
 class UserSerializer(serializers.ModelSerializer):
     password = serializers.CharField(write_only=True)
