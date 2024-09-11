@@ -16,8 +16,16 @@ class TrainJourney(models.Model):
     booked_date = models.DateField()
     bill_date = models.DateField()
     payment_mode = models.CharField(max_length=50)
+    payment_mode_desc = models.CharField(max_length=100)
     journey_status = models.CharField(max_length=50)
 
+class Train(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    code = models.CharField(max_length=10)
+    name = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.name
 
 class Station(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
